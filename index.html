@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Garage</title>
    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
 
 <div class="main-wrapper">
     <div class="header">
-        <button id="btn" onclick="makeDiv()">btn</button>
+        <button id="btn" onclick="makeCard()">btn</button>
         <button id="newVehicleBtn">+</button>
     </div>
     <div class="form-wrapper">
@@ -30,13 +30,22 @@
             <input type="text" id="type" name="type">
             </p>
             <p><label for="engineSize">Engine size:</label><br>
-            <input type="text" id="engineSize"> 
-            </p><name="engineSize">
+            <input type="text" id="engine" name="engine"> 
+            </p>
             <input type="submit" value="Submit">
         </form>        
 
     </div>
-    <div class="main"></div>
+    <div class="main">
+        <div class="card-wrapper">
+            <div class="year-make">1961 Ford Econoline</div>
+            <div class="card-other" id="type">Van</div>
+            <div class="card-other" id="engine-size">3300cc</div>
+            <div class="card-buttons"><button id="card-select">Select</button>
+            <button id="card-delete" onclick="deleteCard(this)">Delete</button ></div>
+        </div>
+    </div>
+        
     <div class="footer"></div>
 </div>
 

@@ -90,9 +90,9 @@ html, body {
 	
 }
 
-.card{
+.card-wrapper{
 	display: grid;
-	grid-template-rows: 5fr 0.5fr 1fr;
+	grid-template-rows: 1.5fr 1fr 1fr 1fr;
 	border-radius: 5px;
 	border-radius: 8px;
 	background-color: #f8fafc;
