@@ -56,14 +56,16 @@ font-family: 'Roboto', sans-serif;
 .main-wrapper{
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 100px 1fr 100px;
+	grid-template-rows: .15fr 1fr .2fr;
 	min-height: 100%;
 
 }
 
 .header{
 	grid-column: 1/2;
+	grid-row:
 	background-color: #eeeeee;
+
 }
 
 .form-wrapper{
@@ -95,6 +97,7 @@ input[type="color"] {
 	grid-row: 2/3;
 	background: #a7bcb9;  
 	gap: 1.5rem;
+	
 
 	
 }
@@ -156,11 +159,13 @@ input[type="color"] {
 	grid-column: 1/4;
 	grid-row: 2/3;
 	border-bottom: 2px dotted black;
+	overflow: hidden;
 }
 
 #racer2Track {
 	grid-column: 1/4;
 	grid-row: 3/4;
+	overflow: hidden;
 }
 
 #racer1Track i, #racer2Track i {
@@ -170,4 +175,14 @@ input[type="color"] {
 .icon i{
 	margin-top: 5px;
 	font-size: 2rem;
+}
+
+#racer1Icon{
+	transition:;
+	transform: ;
+}
+
+#racer2Icon{
+	transition:;
+	transform: ;
 }

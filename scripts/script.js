@@ -144,6 +144,7 @@ function clearForm (){
 };
 
 function racerSelect(button) {
+  let racer1Icon;
   const racer1Track = document.getElementById("racer1Track");
   const racer2Track = document.getElementById("racer2Track");
   let index = button.id
@@ -151,35 +152,75 @@ function racerSelect(button) {
    racer1 = vehicleArray[index];
    switch (racer1.type) {
     case "Car":
-      racer1Track.innerHTML = `<i class="fa-solid fa-car-side"></i>`;
+      racer1Track.innerHTML = `<i class="fa-solid fa-car-side" id="racer1Icon"></i>`;
+      racer1Icon = document.getElementById("racer1Icon");
+      racer1Icon.style.transition = `${racer1.quarterMile * 1000}ms ease-in`;
       break;
       case "Truck":
-      racer1Track.innerHTML = `<i class="fa-solid fa-truck-pickup"></i>`;
+      racer1Track.innerHTML = `<i class="fa-solid fa-truck-pickup" id=racer1Icon></i>`;
+      racer1Icon = document.getElementById("racer1Icon");
+      racer1Icon.style.transition = `${racer1.quarterMile * 1000}ms ease-in`;
       break;
     case "Van":
-      racer1Track.innerHTML = `<i class="fa-solid fa-van-shuttle"></i>`;
+      racer1Track.innerHTML = `<i class="fa-solid fa-van-shuttle" id="racer1Icon"></i>`;
+      racer1Icon = document.getElementById("racer1Icon");
+      racer1Icon.style.transition = `${racer1.quarterMile * 1000}ms ease-in`;
       break;
       case "Motorcycle":
-      racer1Track.innerHTML = `<i class="fa-solid fa-motorcycle"></i>`;
+      racer1Track.innerHTML = `<i class="fa-solid fa-motorcycle" id="racer1Icon"></i>`;
+      racer1Icon = document.getElementById("racer1Icon");
+      racer1Icon.style.transition = `${racer1.quarterMile * 1000}ms ease-in`;
       break;}
 
       racer1Track.style.color=racer1.color;
+
    } else {
     racer2 = vehicleArray[index];
    switch (racer2.type) {
     case "Car":
-      racer2Track.innerHTML = `<i class="fa-solid fa-car-side"></i>`;
+      racer2Track.innerHTML = `<i class="fa-solid fa-car-side" id="racer2Icon"></i>`;
+      racer2Icon = document.getElementById("racer1Icon");
+      racer2Icon.style.transition = `${racer2.quarterMile * 1000}ms ease-in`;
       break;
       case "Truck":
-      racer2Track.innerHTML = `<i class="fa-solid fa-truck-pickup"></i>`;
+      racer2Track.innerHTML = `<i class="fa-solid fa-truck-pickup" id=racer2Icon></i>`;
+      racer2Icon = document.getElementById("racer2Icon");
+      racer2Icon.style.transition = `${racer2.quarterMile * 1000}ms ease-in`;
       break;
     case "Van":
-      racer2Track.innerHTML = `<i class="fa-solid fa-van-shuttle"></i>`;
+      racer2Track.innerHTML = `<i class="fa-solid fa-van-shuttle" id="racer2Icon"></i>`;
+      racer2Icon = document.getElementById("racer2Icon");
+      racer2Icon.style.transition = `${racer2.quarterMile * 1000}ms ease-in`;
       break;
       case "Motorcycle":
-      racer2Track.innerHTML = `<i class="fa-solid fa-motorcycle"></i>`;
+      racer2Track.innerHTML = `<i class="fa-solid fa-motorcycle" id="racer2Icon"></i>`;
+      racer2Icon = document.getElementById("racer2Icon");
+      racer2Icon.style.transition = `${racer2.quarterMile * 1000}ms ease-in`;
       break;}
 
       racer2Track.style.color=racer2.color;
    }
+}
+
+let dummyCard = new Vehicle(1961, "Ford", "Econoline", "Van", `#e22828`, "3300cc", 20 )
+
+let dummyCard2 = new Vehicle(2015, "Yamaha", "WR250RR", "Motorcycle", `#271ae0`, "250cc", 15.49 )
+
+let dummyCard3 = new Vehicle(2023, "Kawasaki", "H2R", "Motorcycle", `#69BE28`, "998cc", 9.64 )
+
+
+vehicleArray.push(dummyCard);
+vehicleArray.push(dummyCard2);
+vehicleArray.push(dummyCard3);
+render()
+
+function race(){
+  const screenWidth = window.innerWidth;
+  racer1Icon = document.getElementById("racer1Icon");
+  racer2Icon = document.getElementById("racer2Icon");
+  racer1Icon.style.transform = `translateX(${screenWidth}px)`;
+  racer2Icon.style.transform = `translateX(${screenWidth}px)`;
+  setTimeout(function(){
+
+  },18000);
 }
