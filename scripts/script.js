@@ -1,4 +1,6 @@
 let vehicleArray =[];
+let racer1 = "unselected";
+let racer2 = "unselected";
 
 const main = document.querySelector(".main");
 
@@ -65,6 +67,7 @@ function render(){
     const selectBtn = document.createElement("button");
     selectBtn.setAttribute("class", "select-button");
     selectBtn.setAttribute("id", i);//sets id so that index can be called later.
+    selectBtn.setAttribute("onClick", "racerSelect(this)");
     selectBtn.innerText="Select";
     const deleteBtn = document.createElement("button");
     deleteBtn.setAttribute("class", "delete-button");
@@ -139,3 +142,44 @@ formWrapper.style.display ="flex";
 function clearForm (){
 
 };
+
+function racerSelect(button) {
+  const racer1Track = document.getElementById("racer1Track");
+  const racer2Track = document.getElementById("racer2Track");
+  let index = button.id
+  if (racer1 === "unselected") {
+   racer1 = vehicleArray[index];
+   switch (racer1.type) {
+    case "Car":
+      racer1Track.innerHTML = `<i class="fa-solid fa-car-side"></i>`;
+      break;
+      case "Truck":
+      racer1Track.innerHTML = `<i class="fa-solid fa-truck-pickup"></i>`;
+      break;
+    case "Van":
+      racer1Track.innerHTML = `<i class="fa-solid fa-van-shuttle"></i>`;
+      break;
+      case "Motorcycle":
+      racer1Track.innerHTML = `<i class="fa-solid fa-motorcycle"></i>`;
+      break;}
+
+      racer1Track.style.color=racer1.color;
+   } else {
+    racer2 = vehicleArray[index];
+   switch (racer2.type) {
+    case "Car":
+      racer2Track.innerHTML = `<i class="fa-solid fa-car-side"></i>`;
+      break;
+      case "Truck":
+      racer2Track.innerHTML = `<i class="fa-solid fa-truck-pickup"></i>`;
+      break;
+    case "Van":
+      racer2Track.innerHTML = `<i class="fa-solid fa-van-shuttle"></i>`;
+      break;
+      case "Motorcycle":
+      racer2Track.innerHTML = `<i class="fa-solid fa-motorcycle"></i>`;
+      break;}
+
+      racer2Track.style.color=racer2.color;
+   }
+}

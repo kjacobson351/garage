@@ -56,7 +56,7 @@ font-family: 'Roboto', sans-serif;
 .main-wrapper{
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 100px 1fr 25px;
+	grid-template-rows: 100px 1fr 100px;
 	min-height: 100%;
 
 }
@@ -140,8 +140,31 @@ input[type="color"] {
 }
 
 .footer{
+	display: grid;
 	grid-row: 3/4;
+	grid-template-columns: 1fr 25fr 1fr;
+	grid-template-rows:20px 50px 50px;
 	background-color: #eeeeee;
+}
+
+.race{
+	grid-column: 1/4;
+	grid-row: 1/2;
+}
+
+#racer1Track {
+	grid-column: 1/4;
+	grid-row: 2/3;
+	border-bottom: 2px dotted black;
+}
+
+#racer2Track {
+	grid-column: 1/4;
+	grid-row: 3/4;
+}
+
+#racer1Track i, #racer2Track i {
+	font-size: 2rem;
 }
 
 .icon i{
