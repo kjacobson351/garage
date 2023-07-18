@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garage</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
@@ -18,31 +27,38 @@
         <h3>Add a new vehicle?</h3>
         <form>
             <p><label for="year">Year:</label><br>
-            <input type="text" id="year" name="year">
+            <input type="text" id="year" name="year" required>
             </p>
             <p><label for="make">Make:</label><br>
-            <input type="text" id="make" name="make">
+            <input type="text" id="make" name="make" required>
             </p>
             <p><label for="model">Model:</label><br>
-            <input type="text" id="model" name="model">
+            <input type="text" id="model" name="model" required>
             </p>
             <p><label for="type">Type:</label><br>
-            <input type="text" id="type" name="type">
+            <input type="text" id="type" name="type" required>
             </p>
+            <p><label for="color">Color:</label><br>
+            <input type="color" id="color" name="color" required>
             <p><label for="engineSize">Engine size:</label><br>
-            <input type="text" id="engine" name="engine"> 
+            <input type="text" id="engine" name="engine" required> 
+            <p><label for="quarterMile">Quarter Mile Time:</label><br>
+                <input type="text" id="quarter-mile" name="quarter-mile" required> 
             </p>
             <input type="submit" value="Submit">
         </form>       
 
     </div>
     <div class="main">
-       <!-- <div class="card-wrapper">
-            <div class="year-make">This is a dummy card</div>
+        <div class="card-wrapper">
+            <div class="year-make"><h1>This is a dummy card</h1>
+                <div class="icon"><i class="fa-solid fa-motorcycle"></i></div>
+            </div>
             <div class="card-other" id="type">Van</div>
             <div class="card-other" id="engine-size">3300cc</div>
+            <div class="card-other" id="quarter-mile"> 1/4 mile: 12.7 seconds</div>
             <div class="card-buttons"><button id="card-select">Select</button>
-            <button id="card-delete" onclick="deleteCard(this)">Delete</button ></div>-->
+            <button id="card-delete" onclick="deleteCard(this)">Delete</button ></div>
         </div>
     </div>
         
