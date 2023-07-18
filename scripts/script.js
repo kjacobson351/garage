@@ -1,19 +1,23 @@
-let vehicleArray =[]
-let uniqueId
-
-const button = document.querySelector("btn")
+let vehicleArray =[];
 
 const main = document.querySelector(".main");
 
+const formWrapper = document.querySelector(".form-wrapper")
+
 const form = document.querySelector("form");
+
+const newVehicleButton = document.getElementById("newVehicleBtn");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   addCarToGarage();
+  render();
+  form.reset();
+  formWrapper.style.display = "none";
 })
 
 
-//gets called on form submit. Gets info from each line of the form and plugs them into the Vehicle constructor. Then pushes that vehicle to an array. Then renders that array into html
+//gets called on form submit. Gets info from each line of the form and plugs them into the Vehicle constructor. Then pushes that vehicle to an array.
 function addCarToGarage(){
   let year = document.querySelector("#year").value;
   let make = document.querySelector("#make").value;
@@ -21,8 +25,8 @@ function addCarToGarage(){
   let type = document.querySelector("#type").value;
   let engineSize = document.querySelector("#engine").value;
   let newVehicle = new Vehicle (year, make, model, type, engineSize);
-  vehicleArray.push(newVehicle)
-  render();
+  vehicleArray.push(newVehicle);
+  
 }
 
 function Vehicle (year, make, model, type, engineSize) {
@@ -93,74 +97,10 @@ function deleteCard(button) {
    render()
 }
 
-/*
-const vehicle1 = new Vehicle (1961, "Ford", "Econoline", "van", "3300cc")
-console.log(vehicle1)
-
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();//stops form from submitting itself.
-  const fd = new FormData(form);//creates a new instance of the FormData object
-  const vehicleObj = Object.fromEntries(fd);
-  console.log(vehicleObj);
-  vehicleArray.push(vehicleObj);
-  makeCard();
-})
-
-
-
-
-//makes card structure in the dom adds the values of the just generated object to the proper divs
-function makeCard(){
-    //dom div construction
-    const cardWrapper = document.createElement("div");
-    cardWrapper.setAttribute("class","card-wrapper");
-    const yearMake = document.createElement("div");
-    yearMake.setAttribute("class","year-make");
-    const type = document.createElement("div");
-    type.setAttribute("class","card-other");
-    type.setAttribute("id","type");
-    const engineSize = document.createElement("div");
-    engineSize.setAttribute("class","card-other");
-    engineSize.setAttribute("id","engine-size");
-    const cardButtonDiv = document.createElement("div");
-    cardButtonDiv.setAttribute("class","card-buttons");
-    const selectBtn = document.createElement("button");
-    selectBtn.setAttribute("id","card-select");
-    selectBtn.innerText="Select";
-    const deleteBtn = document.createElement("button");
-    deleteBtn.setAttribute("id","card-delete");
-    deleteBtn.setAttribute("onClick", "deleteCard(this)")
-    deleteBtn.innerText="Delete";
-    //appending
-    cardWrapper.appendChild(yearMake);
-    cardWrapper.appendChild(type);
-    cardWrapper.appendChild(engineSize);
-    cardWrapper.appendChild(cardButtonDiv);
-    cardButtonDiv.appendChild(selectBtn);
-    cardButtonDiv.appendChild(deleteBtn);
-    main.appendChild(cardWrapper)
-    //assigning object values to card  
-    const last = vehicleArray[vehicleArray.length - 1];
-   yearMake.innerText =`${last.year} ${last.make} ${last.model}`;
-   type.innerText = last.type;
-   engineSize.innerText = last.engine;
+function showForm() {
+formWrapper.style.display ="flex";
 }
 
-function deleteCard(button) {
-   const card = button.parentNode.parentNode;
-    card.parentNode.removeChild(card);
-}
+function clearForm (){
 
-let array = [1,2,3];
-array.pop(2);
-console.log(array)
-
-*/
-
-
-
-
-
-
-
+};
