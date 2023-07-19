@@ -200,6 +200,8 @@ input[type="color"] {
 
 #racer1Track i, #racer2Track i {
 	font-size: 2rem;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
 }
 
 .icon i{
