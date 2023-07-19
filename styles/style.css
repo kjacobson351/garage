@@ -63,8 +63,24 @@ font-family: 'Roboto', sans-serif;
 
 .header{
 	grid-column: 1/2;
-	grid-row:
 	background-color: #eeeeee;
+	
+
+}
+
+.header h1{
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 3rem;
+	letter-spacing: .3rem;
+}
+
+.header h3{
+	display: flex;
+	justify-content: center;
+	font-size: .9rem;
 
 }
 
@@ -82,6 +98,14 @@ font-family: 'Roboto', sans-serif;
 	width: 300px;
 	height: 300px;
 	border-radius: 10px;
+	position: relative;
+}
+
+#cancel{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	border-radius: 7px;
 }
 
 input[type="color"] {
@@ -92,7 +116,7 @@ input[type="color"] {
 
 .main {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, .1fr));
+	grid-template-columns: repeat(auto-fit, minmax(230px, .1fr));
 	grid-column: 1/2;
 	grid-row: 2/3;
 	background: #a7bcb9;  
@@ -107,18 +131,19 @@ input[type="color"] {
 
 .card-wrapper{
 	display: grid;
-	grid-template-rows: 1.5fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 100px 50px;
 	border-radius: 5px;
 	border-radius: 8px;
 	background: #24527a; 
 	border: 4px solid grey;
-	max-height: 15rem;
+	max-height: 9.5rem;
 	margin-left: 1rem;
 	margin-top: 1rem;
 	color: white;
 }
 
 .year-make{
+	grid-row: 1/2;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -129,14 +154,15 @@ input[type="color"] {
 	border-radius: 10px;
 }
 
-.card-other{
+/*.card-other{
 	display: flex;
 	align-items: center;
 	font-weight: 200;
 	margin-left: 1rem;
-}
+}*/
 
 .card-buttons{
+	grid-row: 2/3;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -145,9 +171,8 @@ input[type="color"] {
 .footer{
 	display: grid;
 	grid-row: 3/4;
-	grid-template-columns: 1fr 25fr 1fr;
-	grid-template-rows:20px 50px 50px;
-	background-color: #eeeeee;
+	grid-template-rows:20px 1fr 1fr;
+	background-color: darkgrey;
 }
 
 .race{
@@ -156,16 +181,21 @@ input[type="color"] {
 }
 
 #racer1Track {
+	display: flex;
+	align-items: center;
 	grid-column: 1/4;
 	grid-row: 2/3;
-	border-bottom: 2px dotted black;
+	border-bottom: 2px dotted yellow;
 	overflow: hidden;
 }
 
 #racer2Track {
+	display: flex;
+	align-items: center;
 	grid-column: 1/4;
 	grid-row: 3/4;
 	overflow: hidden;
+	
 }
 
 #racer1Track i, #racer2Track i {

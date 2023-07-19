@@ -19,11 +19,14 @@
 <body>
 
 <div class="main-wrapper">
+    
     <div class="header">
-        <button id="newVehicleBtn" onclick="showForm()">+</button>
+        <h1>Race-O-Matic</h1>
+        <h3>visualize and compare vehicle's 1/4 mile times</h3>
     </div>
     
     <div class="form-wrapper">
+        <button id="cancel" onclick="hideForm()"><i class="fa-solid fa-x"></i></button>
         <h3>Add a new vehicle?</h3>
         <form>
             <p><label for="year">Year:</label><br>
@@ -40,8 +43,8 @@
             </p>
             <p><label for="color">Color:</label><br>
             <input type="color" id="color" name="color" required>
-            <p><label for="engineSize">Engine size:</label><br>
-            <input type="text" id="engine" name="engine" required> 
+            <!--<p><label for="engineSize">Engine size:</label><br>
+            <input type="text" id="engine" name="engine" required>--> 
             <p><label for="quarterMile">Quarter Mile Time:</label><br>
                 <input type="text" id="quarter-mile" name="quarter-mile" required> 
             </p>
@@ -60,6 +63,8 @@
             <div class="card-buttons"><button id="card-select">Select</button>
             <button id="card-delete" onclick="deleteCard(this)">Delete</button ></div>
         </div>
+
+        
     </div>
         
     <div class="footer">

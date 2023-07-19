@@ -14,6 +14,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   addCarToGarage();
   render();
+  renderAddNew();
   form.reset();
   formWrapper.style.display = "none";
 })
@@ -26,20 +27,18 @@ function addCarToGarage(){
   let model = document.querySelector("#model").value;
   let type = document.querySelector("#type").value;
   let color = document.querySelector("#color").value;
-  let engineSize = document.querySelector("#engine").value;
   let quarterMile = document.querySelector("#quarter-mile").value;
-  let newVehicle = new Vehicle (year, make, model, type, color, engineSize, quarterMile);
+  let newVehicle = new Vehicle (year, make, model, type, color, quarterMile);
   vehicleArray.push(newVehicle);
   
 }
 
-function Vehicle (year, make, model, type, color, engineSize, quarterMile) {
+function Vehicle (year, make, model, type, color, quarterMile) {
   this.year = year;
   this.make = make;
   this.model = model;
   this.type = type;
   this.color = color;
-  this.engineSize = engineSize;
   this.quarterMile = quarterMile;
 }
 
@@ -53,15 +52,6 @@ function render(){
     yearMake.setAttribute("class","year-make");
     const iconDiv = document.createElement("div");
     iconDiv.setAttribute("class","icon");
-    const type = document.createElement("div");
-    type.setAttribute("class","card-other");
-    type.setAttribute("id","type");
-    const engineSize = document.createElement("div");
-    engineSize.setAttribute("class","card-other");
-    engineSize.setAttribute("id","engine-size");
-    const quarterMile = document.createElement("div");
-    quarterMile.setAttribute("class","card-other");
-    quarterMile.setAttribute("id","quarter-mile");
     const cardButtonDiv = document.createElement("div");
     cardButtonDiv.setAttribute("class","card-buttons");
     const selectBtn = document.createElement("button");
@@ -74,13 +64,8 @@ function render(){
     deleteBtn.setAttribute("id", i);//sets id so that index can be called later.
     deleteBtn.setAttribute("onClick", "deleteCard(this)")
     deleteBtn.innerText="Delete";
-    //appending
-    
+    //appending 
     cardWrapper.appendChild(yearMake);
-    
-    cardWrapper.appendChild(type);
-    cardWrapper.appendChild(engineSize);
-    cardWrapper.appendChild(quarterMile);
     cardWrapper.appendChild(cardButtonDiv);
     cardButtonDiv.appendChild(selectBtn);
     cardButtonDiv.appendChild(deleteBtn);
@@ -89,7 +74,6 @@ function render(){
     //sets the html from each card using the current info from the current object of the iteration
     const current = vehicleArray[i];
     yearMake.innerText =`${current.year} ${current.make} ${current.model}`;
-    type.innerText = current.type;
     yearMake.appendChild(iconDiv);//MOVED THIS LINE DOWN
     switch (current.type) {
       case "Car":
@@ -105,16 +89,33 @@ function render(){
         iconDiv.innerHTML = `<i class="fa-solid fa-motorcycle"></i>`;
         break;
     }
-    
-    /*if (current.type === "Van"){//turn this into switch statment
-      iconDiv.innerHTML = `<i class="fa-solid fa-van-shuttle"></i>`;
-    }*/
-    iconDiv.style.color = current.color;
-    engineSize.innerText = current.engineSize;
-    quarterMile.innerText = `1/4 mile: ${current.quarterMile} seconds`;
-    //iconDiv.innerText="test";
-   
+    iconDiv.style.color = current.color; 
   }
+}
+
+function renderAddNew(){
+  const cardWrapper = document.createElement("div");
+    cardWrapper.setAttribute("class","card-wrapper");
+    const yearMake = document.createElement("div");
+    yearMake.setAttribute("class","year-make");
+    const iconDiv = document.createElement("div");
+    iconDiv.setAttribute("class","icon");
+    iconDiv.innerHTML = `<i class="fa-solid fa-question"></i>`;
+    const cardButtonDiv = document.createElement("div");
+    cardButtonDiv.setAttribute("class","card-buttons");
+    const selectBtn = document.createElement("button");
+    selectBtn.setAttribute("class", "add-new");
+    //selectBtn.setAttribute("id", i);//sets id so that index can be called later.
+    selectBtn.setAttribute("onClick", "showForm()");
+    selectBtn.innerHTML=`<i class="fa-solid fa-plus"></i>`;
+    //appending 
+    cardWrapper.appendChild(yearMake);
+    cardWrapper.appendChild(cardButtonDiv);
+    cardButtonDiv.appendChild(selectBtn);
+    main.appendChild(cardWrapper)
+    yearMake.innerText = "Add new Vehicle?";
+    yearMake.append(iconDiv);
+    iconDiv.innertext = `<i class="fa-solid fa-plus"></i>`;
 }
 
 
@@ -133,10 +134,15 @@ function deleteCard(button) {
    const index = button.id;
    vehicleArray.splice(index,1);
    render()
+   renderAddNew()
 }
 
 function showForm() {
 formWrapper.style.display ="flex";
+}
+
+function hideForm(){
+  formWrapper.style.display="none";
 }
 
 function clearForm (){
@@ -202,17 +208,21 @@ function racerSelect(button) {
    }
 }
 
-let dummyCard = new Vehicle(1961, "Ford", "Econoline", "Van", `#e22828`, "3300cc", 20 )
+let dummyCard = new Vehicle(1961, "Ford", "Econoline", "Van", `#e22828`, 20 )
 
-let dummyCard2 = new Vehicle(2015, "Yamaha", "WR250RR", "Motorcycle", `#271ae0`, "250cc", 15.49 )
+let dummyCard2 = new Vehicle(2015, "Yamaha", "WR250RR", "Motorcycle", `#271ae0`, 15.49 )
 
-let dummyCard3 = new Vehicle(2023, "Kawasaki", "H2R", "Motorcycle", `#69BE28`, "998cc", 9.64 )
+let dummyCard3 = new Vehicle(2023, "Kawasaki", "H2R", "Motorcycle", `#69BE28`, 9.64 )
+
+let dummyCard4 = new Vehicle (2016, "KTM", "Duke 690", "Motorcycle", `#FF6600`, 11.97)
 
 
 vehicleArray.push(dummyCard);
 vehicleArray.push(dummyCard2);
 vehicleArray.push(dummyCard3);
+vehicleArray.push(dummyCard4);
 render()
+renderAddNew();
 
 function race(){
   const screenWidth = window.innerWidth;
@@ -220,7 +230,17 @@ function race(){
   racer2Icon = document.getElementById("racer2Icon");
   racer1Icon.style.transform = `translateX(${screenWidth}px)`;
   racer2Icon.style.transform = `translateX(${screenWidth}px)`;
-  setTimeout(function(){
-
-  },18000);
+  if (racer1.speed < racer2.speed){//resets racers after the slowest racer finishes.
+    setTimeout(function(){
+    player1 = "unselected";
+    player2 = "unselected"
+    },`${racer1.speed}`);
+  } else {
+    setTimeout(function(){
+      racer1 = "unselected";
+      racer2 = "unselected"
+      },`${racer2.speed}`);
+  }
+ 
 }
+
