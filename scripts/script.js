@@ -33,13 +33,16 @@ function addCarToGarage(){
   
 }
 
-function Vehicle (year, make, model, type, color, quarterMile) {
-  this.year = year;
-  this.make = make;
-  this.model = model;
-  this.type = type;
-  this.color = color;
-  this.quarterMile = quarterMile;
+
+
+class Vehicle {
+  constructor(year, make, model, type, color, quarterMile) {
+    this.year = year;
+    this.model = model;
+    this.type = type;
+    this.color = color;
+    this.quarterMile = quarterMile;
+  }
 }
 
 //erases all cards from screen then makes a new card for every vehicle in the vehicles array
@@ -93,6 +96,7 @@ function render(){
   }
 }
 
+//adds UI to let you add more vehicles
 function renderAddNew(){
   const cardWrapper = document.createElement("div");
     cardWrapper.setAttribute("class","card-wrapper");
@@ -118,7 +122,7 @@ function renderAddNew(){
     iconDiv.innertext = `<i class="fa-solid fa-plus"></i>`;
 }
 
-
+//will remove all cards from the screen. currently calling this function will remove any way to add new cards
 function deleteAllCards(){
   const cards = document.querySelectorAll(".card-wrapper");
   cards.forEach(card => {
@@ -145,10 +149,8 @@ function hideForm(){
   formWrapper.style.display="none";
 }
 
-function clearForm (){
 
-};
-
+//adds the selected vehicles icon to the bottom of the screen and sets the transition time to equal the vehcicles ET.
 function racerSelect(button) {
   let racer1Icon;
   const racer1Track = document.getElementById("racer1Track");
@@ -179,7 +181,7 @@ function racerSelect(button) {
       break;}
 
       racer1Track.style.color=racer1.color;
-
+//If racer1 is already selected racer 2 will be the next one selcted
    } else {
     racer2 = vehicleArray[index];
    switch (racer2.type) {
@@ -207,6 +209,7 @@ function racerSelect(button) {
       racer2Track.style.color=racer2.color;
    }
 }
+//default vehicles that will load on refresh
 
 let dummyCard = new Vehicle(1961, "Ford", "Econoline", "Van", `#e22828`, 20 )
 
